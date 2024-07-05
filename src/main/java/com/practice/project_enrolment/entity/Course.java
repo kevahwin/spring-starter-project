@@ -3,44 +3,39 @@ package com.practice.project_enrolment.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import org.springframework.data.annotation.Id;
 
 @Entity
 public class Course {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private int CourseID;
-  private String Title;
-  private int Credits;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int courseID;
+  private String title;
+  private int credits;
 
-  public Course(int courseID, String title, int credits) {
-    CourseID = courseID;
-    Title = title;
-    Credits = credits;
+  @OneToMany(mappedBy = "courseID")
+  private List<Enrollment> enrollments;
+
+  public Course(String title, int credits) {
+    this.title = title;
+    this.credits = credits;
   }
 
   public int getCourseID() {
-    return CourseID;
-  }
-
-  public void setCourseID(int courseID) {
-    CourseID = courseID;
+    return courseID;
   }
 
   public String getTitle() {
-    return Title;
+    return title;
   }
 
-  public void setTitle(String title) {
-    Title = title;
-  }
 
   public int getCredits() {
-    return Credits;
+    return credits;
   }
 
-  public void setCredits(int credits) {
-    Credits = credits;
-  }
 }
