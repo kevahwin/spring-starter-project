@@ -13,15 +13,15 @@ public class Enrollment {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int enrollmentID;
+  private int enrollmentId;
   private int grade;
 
   @ManyToOne
-  @JoinColumn(name = "studentID")
+  @JoinColumn(name = "studentId")
   private Student student;
 
   @ManyToOne
-  @JoinColumn(name="courseID")
+  @JoinColumn(name="courseId")
   private Course course;
 
 
@@ -30,8 +30,8 @@ public class Enrollment {
     this.course = course;
   }
 
-  public int getEnrollmentID() {
-    return enrollmentID;
+  public int getEnrollmentId() {
+    return enrollmentId;
   }
 
 

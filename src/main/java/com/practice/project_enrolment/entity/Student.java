@@ -12,22 +12,26 @@ import java.util.List;
 @Entity
 public class Student {
 
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int studentID;
+  private int studentId;
   private String lastName;
   private String firstMidName;
 
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private Date enrollmentDate;
 
-  @OneToMany(mappedBy = "studentID")
+  @OneToMany(mappedBy = "student")
   private List<Enrollment> enrollments;
 
   public Student(String lastName, String firstMidName, Date enrollmentDate) {
     this.lastName = lastName;
     this.firstMidName = firstMidName;
     this.enrollmentDate = enrollmentDate;
+  }
+
+  public int getStudentId() {
+    return studentId;
   }
 
   public String getLastName() {
@@ -44,5 +48,9 @@ public class Student {
 
   public void setFirstMidName(String firstMidName) {
     this.firstMidName = firstMidName;
+  }
+
+  public Date getEnrollmentDate() {
+    return enrollmentDate;
   }
 }
