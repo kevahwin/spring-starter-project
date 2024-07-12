@@ -18,7 +18,7 @@ public class Course {
   private int credits;
 
   @OneToMany(mappedBy = "course")
-  private List<Enrollment> enrollments;
+  private List<Enrolment> enrolments;
 
   public Course(String title, int credits) {
     this.title = title;

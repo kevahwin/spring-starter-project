@@ -19,15 +19,15 @@ public class Student {
   private String lastName;
   private String firstMidName;
 
-  private Date enrollmentDate;
+  private Date enrolmentDate;
 
   @OneToMany(mappedBy = "student")
-  private List<Enrollment> enrollments;
+  private List<Enrolment> enrolments;
 
-  public Student(String lastName, String firstMidName, Date enrollmentDate) {
+  public Student(String lastName, String firstMidName, Date enrolmentDate) {
     this.lastName = lastName;
     this.firstMidName = firstMidName;
-    this.enrollmentDate = enrollmentDate;
+    this.enrolmentDate = enrolmentDate;
   }
 
   public int getStudentId() {
@@ -50,7 +50,7 @@ public class Student {
     this.firstMidName = firstMidName;
   }
 
-  public Date getEnrollmentDate() {
-    return enrollmentDate;
+  public Date getEnrolmentDate() {
+    return enrolmentDate;
   }
 }

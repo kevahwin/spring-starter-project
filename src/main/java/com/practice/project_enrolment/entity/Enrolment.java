@@ -9,11 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Enrollment {
+public class Enrolment {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int enrollmentId;
+  private int enrolmentId;
   private int grade;
 
   @ManyToOne
@@ -25,13 +25,13 @@ public class Enrollment {
   private Course course;
 
 
-  public Enrollment(Student student, Course course) {
+  public Enrolment(Student student, Course course) {
     this.student = student;
     this.course = course;
   }
 
-  public int getEnrollmentId() {
-    return enrollmentId;
+  public int getEnrolmentId() {
+    return enrolmentId;
   }
 
 
