@@ -1,0 +1,303 @@
+openapi: 3.0.1
+info:
+  title: Course Management API
+  description: API for managing students, courses, and enrollments
+  version: 1.0.0
+tags:
+  - name : students
+  - name : courses
+  - name : enrollments
+
+paths:
+  /students:
+    get:
+      tags:
+        - students
+      summary: Get all students
+      operationId: getAllStudents
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+    post:
+      tags:
+        - students
+      summary: Create a new student
+      operationId: createStudent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+          description: Student created
+
+  /students/{id}:
+    get:
+      tags:
+        - students
+      summary: Get student by ID
+      operationId: getStudentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '404':
+          description: Student not found
+    put:
+      tags:
+        - students
+      summary: Update student
+      operationId: updateStudent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: Student updated
+    delete:
+      tags:
+        - students
+      summary: Delete student
+      operationId: deleteStudent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Student deleted
+
+  /courses:
+    get:
+      tags:
+        - courses
+      summary: Get all courses
+      operationId: getAllCourses
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+    post:
+      tags:
+        - courses
+      summary: Create a new course
+      operationId: createCourse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+      responses:
+        '201':
+          description: Course created
+
+  /courses/{id}:
+    get:
+      tags:
+        - courses
+      summary: Get course by ID
+      operationId: getCourseById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+        '404':
+          description: Course not found
+    put:
+      tags:
+        - courses
+      summary: Update course
+      operationId: updateCourse
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+      responses:
+        '200':
+          description: Course updated
+    delete:
+      tags:
+        - courses
+      summary: Delete course
+      operationId: deleteCourse
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Course deleted
+
+  /enrollments:
+    get:
+      tags:
+        - enrollments
+      summary: Get all enrollments
+      operationId: getAllEnrollments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Enrollment'
+    post:
+      tags:
+        - enrollments
+      summary: Create a new enrollment
+      operationId: createEnrollment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+      responses:
+        '201':
+          description: Enrollment created
+
+  /enrollments/{id}:
+    get:
+      tags:
+        - enrollments
+      summary: Get enrollment by ID
+      operationId: getEnrollmentById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Enrollment'
+        '404':
+          description: Enrollment not found
+    put:
+      tags:
+        - enrollments
+      summary: Update enrollment
+      operationId: updateEnrollment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Enrollment'
+      responses:
+        '200':
+          description: Enrollment updated
+    delete:
+      tags:
+        - enrollments
+      summary: Delete enrollment
+      operationId: deleteEnrollment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Enrollment deleted
+
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+        lastName:
+          type: string
+        firstMidName:
+          type: string
+        enrollmentDate:
+          type: string
+          format: date
+    Course:
+      type: object
+      properties:
+        courseId:
+          type: integer
+        title:
+          type: string
+        credits:
+          type: integer
+    Enrollment:
+      type: object
+      properties:
+        enrollmentId:
+          type: integer
+        grade:
+          type: integer
+        courseId:
+          type: integer
+        studentId:
+          type: integer
