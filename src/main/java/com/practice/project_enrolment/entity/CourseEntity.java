@@ -9,20 +9,27 @@ import java.util.List;
 
 
 @Entity
-public class Course {
+public class CourseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int courseId;
   private String title;
+
+
   private int credits;
 
-  @OneToMany(mappedBy = "course")
-  private List<Enrolment> enrolments;
+  @OneToMany(mappedBy = "courseEntity")
+  private List<EnrolmentEntity> enrolmentEntities;
 
-  public Course(String title, int credits) {
+
+  public CourseEntity(String title, int credits) {
     this.title = title;
     this.credits = credits;
+  }
+
+  public void setCourseId(int courseId) {
+    this.courseId = courseId;
   }
 
   public int getCourseId() {
@@ -33,9 +40,16 @@ public class Course {
     return title;
   }
 
-
   public int getCredits() {
     return credits;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setCredits(int credits) {
+    this.credits = credits;
   }
 
 }

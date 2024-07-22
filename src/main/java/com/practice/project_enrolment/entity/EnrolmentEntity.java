@@ -9,7 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Enrolment {
+public class EnrolmentEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,16 @@ public class Enrolment {
 
   @ManyToOne
   @JoinColumn(name = "studentId")
-  private Student student;
+  private StudentEntity studentEntity;
 
   @ManyToOne
   @JoinColumn(name="courseId")
-  private Course course;
+  private CourseEntity courseEntity;
 
 
-  public Enrolment(Student student, Course course) {
-    this.student = student;
-    this.course = course;
+  public EnrolmentEntity(StudentEntity studentEntity, CourseEntity courseEntity) {
+    this.studentEntity = studentEntity;
+    this.courseEntity = courseEntity;
   }
 
   public int getEnrolmentId() {
@@ -43,12 +43,12 @@ public class Enrolment {
     this.grade = grade;
   }
 
-  public Student getStudent() {
-    return student;
+  public StudentEntity getStudent() {
+    return studentEntity;
   }
 
-  public Course getCourse() {
-    return course;
+  public CourseEntity getCourse() {
+    return courseEntity;
   }
 
 }

@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Student {
+public class StudentEntity {
 
 
   @Id
@@ -21,10 +21,10 @@ public class Student {
 
   private Date enrolmentDate;
 
-  @OneToMany(mappedBy = "student")
-  private List<Enrolment> enrolments;
+  @OneToMany(mappedBy = "studentEntity")
+  private List<EnrolmentEntity> enrolmentEntities;
 
-  public Student(String lastName, String firstMidName, Date enrolmentDate) {
+  public StudentEntity(String lastName, String firstMidName, Date enrolmentDate) {
     this.lastName = lastName;
     this.firstMidName = firstMidName;
     this.enrolmentDate = enrolmentDate;
