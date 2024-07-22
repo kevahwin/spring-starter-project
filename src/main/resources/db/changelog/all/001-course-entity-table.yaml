@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: kevahwin
+      changes:
+        - createTable:
+            tableName: course
+            columns:
+              - column:
+                  name: courseId
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credits
+                  type: INTEGER
+                  constraints:
+                    nullable: false

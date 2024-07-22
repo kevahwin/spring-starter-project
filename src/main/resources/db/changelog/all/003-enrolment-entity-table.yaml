@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: kevahwin
+      runOnChange: true
+      changes:
+        - createTable:
+            tableName: enrolment
+            columns:
+              - column:
+                  name: enrolmentId
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: grade
+                  type: INTEGER
+              - column:
+                  name: courseId
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: studentId
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            constraintName: fk_enrolment_course
+            baseTableName: enrolment
+            baseColumnNames: courseId
+            referencedTableName: course
+            referencedColumnNames: courseId
+
+        - addForeignKeyConstraint:
+            constraintName: fk_enrolment_student
+            baseTableName: enrolment
+            baseColumnNames: studentId
+            referencedTableName: student
+            referencedColumnNames: studentId
