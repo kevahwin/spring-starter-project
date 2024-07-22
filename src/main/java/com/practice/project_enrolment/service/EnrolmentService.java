@@ -1,6 +1,6 @@
 package com.practice.project_enrolment.service;
 
-import com.practice.project_enrolment.entity.Enrolment;
+import com.practice.project_enrolment.entity.EnrolmentEntity;
 import com.practice.project_enrolment.repository.EnrolmentRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +12,16 @@ public class EnrolmentService {
   @Autowired
   private EnrolmentRepository enrolmentRepository;
 
-  public List<Enrolment> getAllEnrollments(){
+  public List<EnrolmentEntity> getAllEnrollments(){
     return enrolmentRepository.findAll();
   }
 
-  public Enrolment getEnrollmentId(int id){
+  public EnrolmentEntity getEnrollmentId(int id){
     return enrolmentRepository.findById(id).orElse(null);
   }
 
-  public Enrolment saveEnrollment(Enrolment enrolment){
-    return enrolmentRepository.save(enrolment);
+  public EnrolmentEntity saveEnrollment(EnrolmentEntity enrolmentEntity){
+    return enrolmentRepository.save(enrolmentEntity);
   }
 
   public void deleteEnrollmentById(int id){

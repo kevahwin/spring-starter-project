@@ -1,8 +1,10 @@
 package com.practice.project_enrolment.repository;
 
-import com.practice.project_enrolment.entity.Course;
+import com.practice.project_enrolment.entity.CourseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CourseRepository extends JpaRepository<Course, Integer> {
+@Repository
+public interface CourseRepository extends JpaRepository<CourseEntity, Integer> {
 
 }

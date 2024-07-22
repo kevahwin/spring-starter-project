@@ -1,6 +1,6 @@
 package com.practice.project_enrolment.service;
 
-import com.practice.project_enrolment.entity.Student;
+import com.practice.project_enrolment.entity.StudentEntity;
 import com.practice.project_enrolment.repository.StudentRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +12,16 @@ public class StudentService {
   @Autowired
   private StudentRepository studentRepository;
 
-  public List<Student> getAllStudents(){
+  public List<StudentEntity> getAllStudents(){
     return studentRepository.findAll();
   }
 
-  public Student getStudentById(int id){
+  public StudentEntity getStudentById(int id){
     return studentRepository.findById(id).orElse(null);
   }
 
-  public Student saveStudent(Student student){
-    return studentRepository.save(student);
+  public StudentEntity saveStudent(StudentEntity studentEntity){
+    return studentRepository.save(studentEntity);
   }
 
   public void deleteStudentById(int id){
