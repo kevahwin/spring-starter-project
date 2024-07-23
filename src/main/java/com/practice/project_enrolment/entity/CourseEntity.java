@@ -22,6 +22,8 @@ public class CourseEntity {
   @OneToMany(mappedBy = "courseEntity")
   private List<EnrolmentEntity> enrolmentEntities;
 
+  public CourseEntity() {
+  }
 
   public CourseEntity(String title, int credits) {
     this.title = title;

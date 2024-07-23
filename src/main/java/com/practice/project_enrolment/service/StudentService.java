@@ -3,6 +3,7 @@ package com.practice.project_enrolment.service;
 import com.practice.project_enrolment.entity.StudentEntity;
 import com.practice.project_enrolment.repository.StudentRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,8 @@ public class StudentService {
     return studentRepository.findAll();
   }
 
-  public StudentEntity getStudentById(int id){
-    return studentRepository.findById(id).orElse(null);
+  public Optional<StudentEntity> getStudentById(int id){
+    return studentRepository.findById(id);
   }
 
   public StudentEntity saveStudent(StudentEntity studentEntity){
@@ -26,6 +27,16 @@ public class StudentService {
 
   public void deleteStudentById(int id){
     studentRepository.deleteById(id);
+  }
+
+  public StudentEntity updateStudent(int id, StudentEntity studentEntity){
+    return studentRepository.findById(id).map(
+        existingStudent -> {
+          existingStudent.setLastName(studentEntity.getLastName());
+          existingStudent.setFirstMidName(studentEntity.getFirstMidName());
+          return studentRepository.save(existingStudent);
+        }
+    ).orElseThrow(() -> new RuntimeException("Student not found"));
   }
 
 

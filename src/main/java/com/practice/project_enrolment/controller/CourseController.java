@@ -21,8 +21,8 @@ public class CourseController implements CoursesApi{
 
   @Override
   public ResponseEntity<Void> createCourse(Course course) {
-    CourseEntity entity = courseMapper.apiToEntity(course);
-    courseService.saveCourse(entity);
+    CourseEntity courseEntity = courseMapper.apiToEntity(course);
+    courseService.saveCourse(courseEntity);
     return ResponseEntity.status(201).build(); //Created
   }
 
@@ -37,8 +37,8 @@ public class CourseController implements CoursesApi{
     List<CourseEntity> entities = courseService.findAll();
     List<Course> courses = entities.stream()
         .map(courseMapper::entityToApi)
-        .collect(Collectors.toList());
-    return ResponseEntity.status(200).build(); //Success
+        .toList();
+    return ResponseEntity.ok(courses); //Success
   }
 
   @Override

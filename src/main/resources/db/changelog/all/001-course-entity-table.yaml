@@ -4,10 +4,10 @@ databaseChangeLog:
       author: kevahwin
       changes:
         - createTable:
-            tableName: course
+            tableName: course_entity
             columns:
               - column:
-                  name: courseId
+                  name: course_id
                   type: INTEGER
                   autoIncrement: true
                   constraints:

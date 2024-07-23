@@ -5,10 +5,10 @@ databaseChangeLog:
       runOnChange: true
       changes:
         - createTable:
-            tableName: enrolment
+            tableName: enrolment_entity
             columns:
               - column:
-                  name: enrolmentId
+                  name: enrolment_id
                   type: INTEGER
                   autoIncrement: true
                   constraints:
@@ -18,26 +18,26 @@ databaseChangeLog:
                   name: grade
                   type: INTEGER
               - column:
-                  name: courseId
+                  name: course_id
                   type: INTEGER
                   constraints:
                     nullable: false
               - column:
-                  name: studentId
+                  name: student_id
                   type: INTEGER
                   constraints:
                     nullable: false
 
         - addForeignKeyConstraint:
             constraintName: fk_enrolment_course
-            baseTableName: enrolment
-            baseColumnNames: courseId
-            referencedTableName: course
-            referencedColumnNames: courseId
+            baseTableName: enrolment_entity
+            baseColumnNames: course_id
+            referencedTableName: course_entity
+            referencedColumnNames: course_id
 
         - addForeignKeyConstraint:
             constraintName: fk_enrolment_student
-            baseTableName: enrolment
-            baseColumnNames: studentId
-            referencedTableName: student
-            referencedColumnNames: studentId
+            baseTableName: enrolment_entity
+            baseColumnNames: student_id
+            referencedTableName: student_entity
+            referencedColumnNames: student_id

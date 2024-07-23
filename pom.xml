@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.practice</groupId>
-	<artifactId>project-enrolmentEntity</artifactId>
+	<artifactId>project-enrolment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>project-enrolmentEntity</name>
+	<name>project-enrolment</name>
 	<description>Practice project for Spring Boot to enrol students for courses</description>
 	<url/>
 	<licenses>

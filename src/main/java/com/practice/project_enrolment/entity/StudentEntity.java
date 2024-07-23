@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +20,15 @@ public class StudentEntity {
   private String lastName;
   private String firstMidName;
 
-  private Date enrolmentDate;
+  private LocalDate enrolmentDate;
 
   @OneToMany(mappedBy = "studentEntity")
   private List<EnrolmentEntity> enrolmentEntities;
 
-  public StudentEntity(String lastName, String firstMidName, Date enrolmentDate) {
+  public StudentEntity() {
+  }
+
+  public StudentEntity(String lastName, String firstMidName, LocalDate enrolmentDate) {
     this.lastName = lastName;
     this.firstMidName = firstMidName;
     this.enrolmentDate = enrolmentDate;
@@ -50,7 +54,15 @@ public class StudentEntity {
     this.firstMidName = firstMidName;
   }
 
-  public Date getEnrolmentDate() {
+  public LocalDate getEnrolmentDate() {
     return enrolmentDate;
+  }
+
+  public void setStudentId(int studentId) {
+    this.studentId = studentId;
+  }
+
+  public void setEnrolmentDate(LocalDate enrolmentDate) {
+    this.enrolmentDate = enrolmentDate;
   }
 }

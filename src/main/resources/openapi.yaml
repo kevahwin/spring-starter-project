@@ -272,7 +272,7 @@ components:
     Student:
       type: object
       properties:
-        id:
+        studentId:
           type: integer
         lastName:
           type: string
