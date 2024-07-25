@@ -3,6 +3,7 @@ import com.practice.project_enrolment.entity.CourseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.openapitools.model.Course;
 
 
 @Mapper(componentModel = "spring")
@@ -12,12 +13,12 @@ public interface CourseMapper {
   @Mapping(target = "courseId", source = "courseId")
   @Mapping(target = "title", source = "title")
   @Mapping(target = "credits", source = "credits")
-  CourseEntity apiToEntity(org.openapitools.model.Course course);
+  CourseEntity apiToEntity(Course course);
 
   @Mapping(target = "courseId", source = "courseId")
   @Mapping(target = "title", source = "title")
   @Mapping(target = "credits", source = "credits")
-  org.openapitools.model.Course entityToApi(CourseEntity courseEntity);
+  Course entityToApi(CourseEntity courseEntity);
 }
 
 
