@@ -1,12 +1,12 @@
 openapi: 3.0.1
 info:
   title: Course Management API
-  description: API for managing students, courses, and enrollments
+  description: API for managing students, courses, and enrolments
   version: 1.0.0
 tags:
   - name : students
   - name : courses
-  - name : enrollments
+  - name : enrolments
 
 paths:
   /students:
@@ -181,12 +181,12 @@ paths:
         '204':
           description: Course deleted
 
-  /enrollments:
+  /enrolments:
     get:
       tags:
-        - enrollments
-      summary: Get all enrollments
-      operationId: getAllEnrollments
+        - enrolments
+      summary: Get all enrolments
+      operationId: getAllEnrolments
       responses:
         '200':
           description: Successful operation
@@ -195,28 +195,28 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Enrollment'
+                  $ref: '#/components/schemas/Enrolment'
     post:
       tags:
-        - enrollments
-      summary: Create a new enrollment
-      operationId: createEnrollment
+        - enrolments
+      summary: Create a new enrolment
+      operationId: createEnrolment
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Enrollment'
+              $ref: '#/components/schemas/Enrolment'
       responses:
         '201':
-          description: Enrollment created
+          description: enrolment created
 
-  /enrollments/{id}:
+  /enrolments/{id}:
     get:
       tags:
-        - enrollments
-      summary: Get enrollment by ID
-      operationId: getEnrollmentById
+        - enrolments
+      summary: Get enrolment by ID
+      operationId: getEnrolmentById
       parameters:
         - name: id
           in: path
@@ -229,14 +229,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Enrollment'
+                $ref: '#/components/schemas/Enrolment'
         '404':
-          description: Enrollment not found
+          description: enrolment not found
     put:
       tags:
-        - enrollments
-      summary: Update enrollment
-      operationId: updateEnrollment
+        - enrolments
+      summary: Update enrolment
+      operationId: updateEnrolment
       parameters:
         - name: id
           in: path
@@ -248,15 +248,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Enrollment'
+              $ref: '#/components/schemas/Enrolment'
       responses:
         '200':
-          description: Enrollment updated
+          description: enrolment updated
     delete:
       tags:
-        - enrollments
-      summary: Delete enrollment
-      operationId: deleteEnrollment
+        - enrolments
+      summary: Delete enrolment
+      operationId: deleteEnrolment
       parameters:
         - name: id
           in: path
@@ -265,7 +265,7 @@ paths:
             type: integer
       responses:
         '204':
-          description: Enrollment deleted
+          description: Enrolment deleted
 
 components:
   schemas:
@@ -278,7 +278,7 @@ components:
           type: string
         firstMidName:
           type: string
-        enrollmentDate:
+        enrolmentDate:
           type: string
           format: date
     Course:
@@ -290,10 +290,10 @@ components:
           type: string
         credits:
           type: integer
-    Enrollment:
+    Enrolment:
       type: object
       properties:
-        enrollmentId:
+        enrolmentId:
           type: integer
         grade:
           type: integer

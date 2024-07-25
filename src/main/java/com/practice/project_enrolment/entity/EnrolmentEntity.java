@@ -1,6 +1,7 @@
 package com.practice.project_enrolment.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,8 @@ public class EnrolmentEntity {
   @JoinColumn(name="courseId")
   private CourseEntity courseEntity;
 
+  public EnrolmentEntity() {
+  }
 
   public EnrolmentEntity(StudentEntity studentEntity, CourseEntity courseEntity) {
     this.studentEntity = studentEntity;
@@ -43,12 +46,24 @@ public class EnrolmentEntity {
     this.grade = grade;
   }
 
-  public StudentEntity getStudent() {
+  public StudentEntity getStudentEntity() {
     return studentEntity;
   }
 
-  public CourseEntity getCourse() {
+  public CourseEntity getCourseEntity() {
     return courseEntity;
   }
 
+  public void setEnrolmentId(int enrolmentId) {
+    this.enrolmentId = enrolmentId;
+  }
+
+
+  public void setStudentEntity(StudentEntity studentEntity) {
+    this.studentEntity = studentEntity;
+  }
+
+  public void setCourseEntity(CourseEntity courseEntity) {
+    this.courseEntity = courseEntity;
+  }
 }

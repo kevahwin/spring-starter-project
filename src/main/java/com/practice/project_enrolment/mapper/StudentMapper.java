@@ -13,13 +13,13 @@ public interface StudentMapper {
   @Mapping(target = "studentId", source = "studentId")
   @Mapping(target = "lastName", source = "lastName")
   @Mapping(target = "firstMidName", source="firstMidName")
-  @Mapping(target = "enrolmentDate", source="enrollmentDate")
+  @Mapping(target = "enrolmentDate", source="enrolmentDate")
   StudentEntity apiToEntity(Student student);
 
   @Mapping(target = "studentId", source = "studentId")
   @Mapping(target = "lastName", source = "lastName")
   @Mapping(target = "firstMidName", source="firstMidName")
-  @Mapping(target = "enrollmentDate", source="enrolmentDate")
+  @Mapping(target = "enrolmentDate", source="enrolmentDate")
   Student entityToApi(StudentEntity studentEntity);
 
 
