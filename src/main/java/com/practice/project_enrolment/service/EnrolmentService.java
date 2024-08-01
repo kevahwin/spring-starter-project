@@ -10,33 +10,38 @@ import org.springframework.stereotype.Service;
 @Service
 public class EnrolmentService {
 
-  @Autowired
-  private EnrolmentRepository enrolmentRepository;
+  @Autowired private EnrolmentRepository enrolmentRepository;
 
-  public List<EnrolmentEntity> getAllEnrollments(){
+  public List<EnrolmentEntity> getAllEnrolments() {
     return enrolmentRepository.findAll();
   }
 
-  public Optional<EnrolmentEntity> getEnrollmentId(int id){
+  public Optional<EnrolmentEntity> getEnrolmentId(int id) {
     return enrolmentRepository.findById(id);
   }
 
-  public EnrolmentEntity saveEnrollment(EnrolmentEntity enrolmentEntity){
+  public EnrolmentEntity saveEnrolment(EnrolmentEntity enrolmentEntity) {
     return enrolmentRepository.save(enrolmentEntity);
   }
 
-  public void deleteEnrollmentById(int id){
-    enrolmentRepository.deleteById(id);
+  public boolean deleteEnrolmentById(int id) {
+    if (enrolmentRepository.existsById(id)) {
+      enrolmentRepository.deleteById(id);
+      return true;
+    }
+    return false;
   }
 
-  public EnrolmentEntity updateEnrolment(int id, EnrolmentEntity enrolmentEntity){
-    return enrolmentRepository.findById(id).map(
-        existingCourse -> {
-          existingCourse.setGrade(enrolmentEntity.getGrade());
-          existingCourse.setCourseEntity(enrolmentEntity.getCourseEntity());
-          existingCourse.setStudentEntity(enrolmentEntity.getStudentEntity());
-          return enrolmentRepository.save(existingCourse);
-        }
-    ).orElseThrow(() -> new RuntimeException("Enrolment not found"));
+  public EnrolmentEntity updateEnrolment(int id, EnrolmentEntity enrolmentEntity) {
+    return enrolmentRepository
+        .findById(id)
+        .map(
+            existingCourse -> {
+              existingCourse.setGrade(enrolmentEntity.getGrade());
+              existingCourse.setCourseEntity(enrolmentEntity.getCourseEntity());
+              existingCourse.setStudentEntity(enrolmentEntity.getStudentEntity());
+              return enrolmentRepository.save(existingCourse);
+            })
+        .orElseThrow(() -> new RuntimeException("Enrolment not found"));
   }
 }
