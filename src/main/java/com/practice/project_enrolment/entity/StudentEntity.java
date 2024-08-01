@@ -9,8 +9,15 @@ import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class StudentEntity {
 
 
@@ -25,44 +32,10 @@ public class StudentEntity {
   @OneToMany(mappedBy = "studentEntity")
   private List<EnrolmentEntity> enrolmentEntities;
 
-  public StudentEntity() {
-  }
-
-  public StudentEntity(String lastName, String firstMidName, LocalDate enrolmentDate) {
+  public StudentEntity(String lastName, String firstMidName,
+      LocalDate enrolmentDate) {
     this.lastName = lastName;
     this.firstMidName = firstMidName;
-    this.enrolmentDate = enrolmentDate;
-  }
-
-  public int getStudentId() {
-    return studentId;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getFirstMidName() {
-    return firstMidName;
-  }
-
-  public void setFirstMidName(String firstMidName) {
-    this.firstMidName = firstMidName;
-  }
-
-  public LocalDate getEnrolmentDate() {
-    return enrolmentDate;
-  }
-
-  public void setStudentId(int studentId) {
-    this.studentId = studentId;
-  }
-
-  public void setEnrolmentDate(LocalDate enrolmentDate) {
     this.enrolmentDate = enrolmentDate;
   }
 }
