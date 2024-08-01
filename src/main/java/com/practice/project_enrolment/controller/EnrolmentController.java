@@ -36,19 +36,19 @@ public class EnrolmentController implements EnrolmentsApi {
     EnrolmentEntity entity = enrolmentMapper.apiToEntity(enrolment);
     entity.setCourseEntity(courseEntity.get());
     entity.setStudentEntity(studentEntity.get());
-    enrolmentService.saveEnrollment(entity);
+    enrolmentService.saveEnrolment(entity);
     return ResponseEntity.status(201).build();
   }
 
   @Override
   public ResponseEntity<Void> deleteEnrolment(Integer id) {
-    enrolmentService.deleteEnrollmentById(id);
+    enrolmentService.deleteEnrolmentById(id);
     return ResponseEntity.status(204).build();
   }
 
   @Override
   public ResponseEntity<List<Enrolment>> getAllEnrolments() {
-    List<EnrolmentEntity> entities = enrolmentService.getAllEnrollments();
+    List<EnrolmentEntity> entities = enrolmentService.getAllEnrolments();
     List<Enrolment> enrolments = entities.stream().map(enrolmentMapper::entityToApi).toList();
     return ResponseEntity.ok(enrolments);
   }
@@ -56,7 +56,7 @@ public class EnrolmentController implements EnrolmentsApi {
   @Override
   public ResponseEntity<Enrolment> getEnrolmentById(Integer id) {
     return enrolmentService
-        .getEnrollmentId(id)
+        .getEnrolmentId(id)
         .map(enrolmentMapper::entityToApi)
         .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.status(404).build());
