@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class CourseEntity {
 
   @Id
@@ -26,6 +28,8 @@ public class CourseEntity {
   @OneToMany(mappedBy = "courseEntity")
   private List<EnrolmentEntity> enrolmentEntities;
 
-
-
+  public CourseEntity(String title, int credits) {
+    this.title = title;
+    this.credits = credits;
+  }
 }
